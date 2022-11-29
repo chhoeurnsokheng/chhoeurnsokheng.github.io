@@ -44,21 +44,37 @@
         </section>
         <section id="portfolio" class="portfolio">
             <h2>My Projects</h2>
-            <div id="my-projects">
+            <div class="projects_section" id="projects_section">
+
 
             </div>
-            <article>
-                <h3></h3>
-            </article>
-        </section>
-        <section>
-
         </section>
     </main>
     <footer>
 
     </footer>
     
-    <script src="./script.js"></script>
+    <!-- <script src="./script.js"></script> -->
+    <script src="./md_to_html.js"></script>
+    <script>
+    var parser = new DOMParser();
+
+
+    fetch('./portfolio.md')
+    .then(response => response.text())
+    .then(item => {
+        Array.from(parser.parseFromString(item, 'text/html').querySelectorAll("article"))
+        .forEach(node => {
+            const wrapper = document.createElement("article")
+            wrapper.classList.add("card")
+            wrapper.innerHTML =  parseMd(node.textContent)
+
+
+            document.getElementById("projects_section").appendChild(wrapper)
+        })
+    })
+
+
+    </script>
 </body>
 </html>
