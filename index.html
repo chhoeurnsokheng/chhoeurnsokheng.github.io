@@ -10,11 +10,10 @@
 </head>
 <body class="dark">
     <header>
-        <span class="header_logo">
+        <a href="#" class="header_logo">
             Sokheng Chhoeurn
-        </span>
+        </a>
         <nav>
-            <a href="/">Home</a>
             <a href="#portfolio">Portfolio</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -59,7 +58,7 @@
     <script>
     var parser = new DOMParser();
 
-
+        
     fetch('./portfolio.md')
     .then(response => response.text())
     .then(item => {

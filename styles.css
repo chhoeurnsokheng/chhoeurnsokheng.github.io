@@ -11,8 +11,8 @@
 
     --page_padding_horizontal: 2.5rem;
     
-    --card-height: 65vh;
-    --card-width: calc(var(--card-height) / 1.5);
+    --card-height: 25rem;
+    --card-width: calc(var(--card-height) / 1.25);
 }
 
 html {
@@ -143,6 +143,11 @@ section.portfolio {
     padding: 2.5rem var(--page_padding_horizontal);
     /* background-color: #131313; */
 }
+@media screen and (max-width: 48em) {
+    section.portfolio {
+        padding: 5rem 0;
+    }
+}
 section.portfolio > h2 {
 
     width: 100%;
@@ -151,12 +156,27 @@ section.portfolio > h2 {
 }
 
 .projects_section {
-    width: 100%;
+    width: 100%; max-width: 100%;
     display: grid;
     grid-template-columns: auto auto auto; 
+    gap: 2.5rem;
     max-width: 64em;
     margin: 0 auto;
-
+}
+@media screen and (max-width: 64em) {
+    .projects_section {
+        grid-template-columns: auto auto;
+        max-width: 95%;
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 48em) {
+    .projects_section {
+        max-width: 95%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 .projects_section > article {
     /* outline: 1px solid red; */
@@ -177,16 +197,20 @@ section.portfolio > h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-
+    padding: 2.5rem .5rem;
 }
 .projects_section > article img {
-    max-width: 80%;
-    object-fit: cover;
+    height: calc(var(--card-height) / 2);
+    width: 100%;
+    max-width: 100%;
+    object-fit: contain;
 }
-.projects_section > p {
-    outline: 1px solid green;
+.projects_section > article > div {
+    background-color: #fff;
+    width: 100%;
+    padding: .5rem 0;
 }
+
 
 @property --rotate {
     syntax: "<angle>";
@@ -196,22 +220,22 @@ section.portfolio > h2 {
   
     
   
-  .card {
+.card {
     /* background: #191c29; */
     width: var(--card-width);
     height: var(--card-height);
     padding: 3px;
     position: relative;
     border-radius: 6px;
-  }
-  
-  .card:hover:before, .card:hover:after {
+}
+
+.card:hover:before, .card:hover:after {
     animation: none;
     opacity: 0;
-  }
+}
+
   
-  
-  .card::before {
+.card::before {
     content: "";
     width: 104%;
     height: 102%;
@@ -219,14 +243,14 @@ section.portfolio > h2 {
     background-image: linear-gradient(
         var(--rotate)
         , var(--clr_primary), var(--clr_secondary) 43%, var(--clr_accent));
-      position: absolute;
-      z-index: -1;
-      top: -1%;
-      left: -2%;
-      animation: spin 10s linear infinite;
-  }
+    position: absolute;
+    z-index: -1;
+    top: -1%;
+    left: -2%;
+    animation: spin 10s linear infinite;
+}
   
-  .card::after {
+.card::after {
     position: absolute;
     content: "";
     top: calc(var(--card-height) / 6);
@@ -239,19 +263,18 @@ section.portfolio > h2 {
     transform: scale(0.8);
     filter: blur(calc(var(--card-height) / 6));
     background-image: linear-gradient(
-      var(--rotate)
-      , rgba(93, 220, 255, 0.25), rgba(61, 103, 227, 0.25) 43%, rgba(78, 0, 194, 0.25));
-      opacity: 1;
+        var(--rotate)
+        , rgba(93, 220, 255, 0.25), rgba(61, 103, 227, 0.25) 43%, rgba(78, 0, 194, 0.25));
+        opacity: 1;
     transition: opacity .5s;
     animation: spin 2.5s linear infinite;
-  }
+}
   
-  @keyframes spin {
+@keyframes spin {
     0% {
-      --rotate: 0deg;
+        --rotate: 0deg;
     }
     100% {
-      --rotate: 360deg;
+        --rotate: 360deg;
     }
-  }
-  
+}
